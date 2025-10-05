@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
   
   // Set base path and asset prefix for GitHub Pages
   basePath: '/edcweb25',
-  assetPrefix: '/edcweb25/',
+  assetPrefix: '/edcweb25',
   
   // Ensure trailing slash is not added
   trailingSlash: false,

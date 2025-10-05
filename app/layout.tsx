@@ -66,9 +66,9 @@ export const metadata: Metadata = {
   title: "Team EDC",
   description: "The Official Website of Team EDC",
   icons: {
-    icon: "/edc_logo.png",
-    shortcut: "/edc_logo.png",
-    apple: "/edc_logo.png",
+    icon: "/edcweb25/edc_logo.png",
+    shortcut: "/edcweb25/edc_logo.png",
+    apple: "/edcweb25/edc_logo.png",
   },
 };
 
