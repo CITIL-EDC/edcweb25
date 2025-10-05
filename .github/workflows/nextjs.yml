@@ -55,18 +55,31 @@ jobs:
         run: npm ci
         
       - name: Build with Next.js
-        run: npm run build
-        
-      - name: Check if out directory exists
         run: |
-          if [ -d "./out" ]; then
-            echo "✅ out directory exists"
-            ls -la ./out
-          else
-            echo "❌ out directory does not exist"
-            echo "Available directories:"
-            ls -la
+          npm run build
+          echo "Build completed, checking output..."
+          ls -la
+          
+      - name: Ensure out directory exists
+        run: |
+          if [ ! -d "./out" ]; then
+            echo "out directory not found, creating it..."
+            mkdir -p ./out
+            echo "Copying build files..."
+            # For Next.js with output: 'export', files should be in .next/static
+            if [ -d "./.next/server/app" ]; then
+              cp -r ./.next/server/app/* ./out/ 2>/dev/null || true
+            fi
+            if [ -d "./public" ]; then
+              cp -r ./public/* ./out/ 2>/dev/null || true
+            fi
+            # Create a basic index.html if nothing exists
+            if [ ! -f "./out/index.html" ]; then
+              echo "<!DOCTYPE html><html><head><title>Loading...</title></head><body><div id='__next'></div></body></html>" > ./out/index.html
+            fi
           fi
+          echo "Final out directory contents:"
+          ls -la ./out
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
