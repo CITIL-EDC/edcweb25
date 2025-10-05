@@ -7,7 +7,8 @@ import NavBar from "./components/NavBar";
 import AboutUs from "./components/AboutUs";
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
+  // Temporarily disable loading screen for debugging
+  const [isLoading, setIsLoading] = useState(false);
   const loadingDuration = 5; // Duration in seconds
 
   useEffect(() => {

@@ -10,11 +10,14 @@ const nextConfig: NextConfig = {
   },
   
   // Set base path and asset prefix for GitHub Pages
-  basePath: process.env.NODE_ENV === 'production' ? '/edcweb25' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/edcweb25/' : '',
+  basePath: '/edcweb25',
+  assetPrefix: '/edcweb25/',
   
   // Ensure trailing slash is not added
   trailingSlash: false,
+  
+  // Disable server-side features for static export
+  reactStrictMode: true,
   
   // Enable experimental features for better static export
   experimental: {
