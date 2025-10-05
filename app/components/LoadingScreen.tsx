@@ -406,11 +406,11 @@ export default function LoadingScreen({ duration = 5 }: LoadingScreenProps) {
 
       gl.useProgram(program);
 
-      // Animation phases: up (2.5s) -> stay (duration-2.5s) -> down (2.5s) - SNAPPIER!
-      const upDuration = 2.5;
-      const downDuration = 2.5;
-      const stayDuration = Math.max(0, duration - upDuration);
-      const totalDuration = upDuration + stayDuration + downDuration;
+      // Animation phases: up (1s) -> stay (duration-2s) -> down (1s) - SIMPLIFIED!
+      const upDuration = 1.0;
+      const downDuration = 1.0;
+      const stayDuration = Math.max(0, duration - upDuration - downDuration);
+      const totalDuration = duration; // Use the exact duration passed from parent
       
       let sphereY: number;
       let progressValue: number;
