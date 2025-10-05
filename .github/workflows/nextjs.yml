@@ -31,7 +31,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'npm'
           
       - name: Setup Pages
@@ -56,6 +56,17 @@ jobs:
         
       - name: Build with Next.js
         run: npm run build
+        
+      - name: Check if out directory exists
+        run: |
+          if [ -d "./out" ]; then
+            echo "✅ out directory exists"
+            ls -la ./out
+          else
+            echo "❌ out directory does not exist"
+            echo "Available directories:"
+            ls -la
+          fi
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
